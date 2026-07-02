@@ -8,14 +8,14 @@
 
 - **Student:** Mohammad Gharandouq
 - **Model in use:** Opus 4.8
-- **Last session:** 2026-07-02 — Module 0 (getting started)
+- **Last session:** 2026-07-02 — Module 1 in progress (reproduced the gc-content bug; paused before applying the fix)
 
 ## Module checklist
 
 | # | Module | Status | Completed |
 |---|--------|--------|-----------|
 | 0 | Getting started (onboarding to the workshop) | ✅ done | 2026-07-02 |
-| 1 | The workshop loop: plan → act → verify → record → commit → push | ⬜ not started | — |
+| 1 | The workshop loop: plan → act → verify → record → commit → push | 🔄 in progress | — |
 | 2 | Choosing your model | 🔒 locked | — |
 | 3 | Steering with modes: plan vs. auto | 🔒 locked | — |
 | 4 | Project memory: CLAUDE.md & skills | 🔒 locked | — |
@@ -34,9 +34,16 @@ earlier modules first)
 
 - **2026-07-02 — Model choice:** Opus 4.8, chosen for reasoning-heavy guidance
   through the workshop. (Module 2 will cover how to choose deliberately.)
+- **2026-07-02 — Module 1 diagnosis (loop step 1, reproduce):** Ran
+  `gc_content.py` on `sample.fasta`. `seq4_softmasked` (`atgcATGCatgc`) reports
+  GC = 0.167 (2/12) but the correct value is 0.500 (6/12) — the GC counter is
+  **case-sensitive** and skips lowercase soft-masked `a/c/g/t`. Next session
+  resumes at the **plan → act** step (likely a `.upper()`-style fix), then adds
+  a lowercase test, commits `fix(gc-content): ...`, and pushes.
 
 ## Session log
 
 > One line per working session, newest first. The guide appends here.
 
+- 2026-07-02 — Module 1 started: reproduced the gc-content soft-masked bug and diagnosed case-sensitivity; paused before the fix.
 - 2026-07-02 — Module 0 complete: onboarded Mohammad, recorded name & model (Opus 4.8), unlocked Module 1.
